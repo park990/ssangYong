@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+  table{
+    border-collapse: collapse;
+    width: 600px;
+  }
+  tbody>tr>td,th{
+    border:1px solid #000000;
+  }
+  .textCenter{
+    text-align: center;
+  }
+  tbody>tr>th {
+    background-color: aqua;
+  }
+ .delete{
+    border:0px;
+  }
+
+
+  </style>
+</head>
+<body>
+<article>
+
+  <div>
+  <table id>
+    <caption>테이블연습</caption>
+    <tbody>
+    <tr>
+      <th class="textCenter" class="blue">제목</th>
+      <td colspan="4">테이블연습입니다.</td>
+    </tr>
+    <tr>
+      <th class="textCenter">글쓴이</th>
+      <td colspan="4">이도</td>
+    </tr>
+    <tr>
+      <th class="textCenter">등록일</th>
+      <td colspan="4">2024년 12월 10일</td>
+    </tr>
+    <tr>
+      <th class="textCenter" >내용</th>
+      <td  colspan="4"> 여기는 글 내용이 표현되는 곳입니다. 그리고<br/>
+      연습으로 그을 써 봅니다. 잘~보이고 있군요!<br/>
+      ㅎㅎㅎㅎ</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr align="right">
+      <td colspan="2" class="delete">
+      <input type ="button" value="뒤로"/>
+      <button type="button">뒤로</button>
+      <button type="button">답변</button>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+    </div>
+</article>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    /* cs는 주석을 이렇게 하는거임
+       현재 문서에서 table이라느 태그를만났을 때 다음의
+       내용을 적용시킨다.
+    */
+    table{
+      width: 400px; border:1px solid #000000;/*solid=단선 dashed=점선*/
+      border-collapse: collapse;
+    }
+    td,th{
+      border:1px solid #000000;
+
+    }
+       thead>tr>th {
+          background-color: #cccccc;
+        }
+  </style>
+</head>
+<body>
+<article>
+  <header>
+    <h2>테이블 연습</h2>
+  </header>
+  <div>
+    <table id="t1">
+      <caption>사원테이블</caption><!--테이블의 제목-->
+      <thead>
+      <tr>
+        <th>사번</th>
+        <th>이름</th>
+        <th>직종</th>
+        <th>이메일</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>1000</td>
+        <th>일도</th>
+        <td>DEV</td>
+        <td>one@korea.com</td>
+      </tr>
+      <tr>
+        <td>2000</td>
+        <th>이도</th>
+        <td>DEV</td>
+        <td>two@korea.com</td>
+      </tr>
+      <tr>
+        <td>3000</td>
+        <th>삼도</th>
+        <td>DEV</td>
+        <td>three@korea.com</td>
+      </tr>
+
+      </tbody>
+      <tfoot>
+      <td colspan="4">자료제공:SIST인사과</td> <!--td열 4개를 하나로 합치기-->
+      </tfoot>
+    </table>
+
+    <table id="t2">
+      <caption>사원테이블</caption><!--테이블의 제목-->
+      <thead>
+      <tr>
+        <th>사번</th>
+        <th>이름</th>
+        <th>직종</th>
+        <th>이메일</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>1000</td>
+        <td>일도</td>
+        <td>DEV</td>
+        <td>one@korea.com</td>
+      </tr>
+      <tr>
+        <td>2000</td>
+        <td>이도</td>
+        <td>DEV</td>
+        <td>two@korea.com</td>
+      </tr>
+      <tr>
+        <td>3000</td>
+        <td>삼도</td>
+        <td>DEV</td>
+        <td>three@korea.com</td>
+      </tr>
+
+      </tbody>
+      <tfoot>
+      <td colspan="4">자료제공:SIST인사과</td> <!--td열 4개를 하나로 합치기-->
+      </tfoot>
+    </table>
+  </div>
+</article>
+</body>
+</html>

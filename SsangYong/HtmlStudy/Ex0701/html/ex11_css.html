@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    table {
+      border-collapse: collapse;
+     border: 1px solid #000000
+    }
+    tbody>tr>td{
+      border-collapse: collapse;
+      border: 1px solid #000;
+
+    }
+    #t1{
+      border:0px;
+    }
+    #t1>tbody>tr>td{
+      border:0px;
+    }
+    #t2 td[colspan="2"] {
+      background-color: #f0f0f0;
+    }
+    table>caption{
+      text-indent:-9999px;
+    }
+    .textCenter{
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+<article>
+<header>
+  <h3>문제1</h3>
+</header>
+  <div>
+  <table id =t1>
+    <caption>이미지테이블</caption>
+    <!--각 컬럼별 너비를 지정할 수 있다-->
+      <tbody>
+      <tr class="textCenter">
+        <td><img src="../img/img_1.png" alt="이미지1"></td>
+        <td >고요함</td>
+        <td><img src="../img/img_1.png"alt="이미지2"></td>
+      </tr>
+      <tr class="textCenter">
+        <td>외침속</td>
+        <td><img src="../img/img_3.png"alt="이미지3"></td>
+        <td>항해</td>
+      </tr>
+      <tr class="textCenter">
+        <td><img src="../img/img_4.png"alt="이미지4"></td>
+        <td>고요함</td>
+        <td><img src="../img/img_5.png"alt="이미지5"></td>
+      </tr>
+    <tbody>
+  </table>
+  </div>
+  </div>
+</article>
+
+<article>
+  <header>
+    <h2>문제2</h2>
+  </header>
+  <div>
+    <table id =t2>
+      <caption>테이블 병합</caption>
+      <colgroup>
+        <col width="100px"/>
+        <col width="80px"/>
+        <col width="80px"/>
+        <col width="100px"/>
+      </colgroup>
+      <tbody>
+      <tr class="textCenter">
+        <td rowspan="3">사진</td>
+        <td colspan="3">타이틀입니다.</td>
+      </tr>
+      <tr class="textCenter">
+        <td colspan="2">데이터</td>
+        <td>데이터</td>
+      </tr>
+      <tr class="textCenter">
+        <td colspan="2">데이터</td>
+        <td>데이터</td>
+      </tr>
+      <tr class="textCenter">
+        <td>데이터</td>
+        <td colspan="2">데이터</td>
+        <td>데이터</td>
+      </tr>
+      <tr class="textCenter">
+        <td>데이터</td>
+        <td colspan="3" rowspan="3"></td>
+      </tr>
+      <tr class="textCenter">
+        <td>데이터</td>
+      </tr>
+      <tr class="textCenter">
+        <td>데이터</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</article>
+</body>
+</html>
