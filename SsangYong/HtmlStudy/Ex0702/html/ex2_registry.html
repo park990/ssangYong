@@ -4,6 +4,34 @@
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
+<style>
+#email2{
+  width:100px;
+  padding:3px;
+}
+#phone1 {
+  width: 70px;
+  padding: 2px;
+}
+.width{
+  width:70px;
+}
+label{
+  display:inline-block;
+  width:70px;
+  margin-top:8px;
+}
+.block{
+  display: block;
+  margin-top:10px;
+}
+#email{
+  width:145px;
+}
+button{
+  margin-left: 300px;
+}
+</style>
 <body>
   <article>
     <header>
@@ -16,12 +44,13 @@
         <br/>
 
         <!--콤보박스-->
+        <label for="s2">사는곳:</label>
         <select id="s2" name="s2">
           <option value="seoul">서울</option><!--선택시 서버로 전달될 때에는 seoul이 보내진다.-->
           <option value="busan">부산</option>
           <option value="incheon">인천</option>
-          <option selected>::도시선택::</option>
         </select>
+        <br/>
           <!-- 체크박스 -->
           <label for="ch1">취미:</label>
           <!--체크박스들은 하나의 그룹을 구분하는 것이 name으로 구분
@@ -40,7 +69,7 @@
           <br/>
 
           <!--전화번호-->
-          <label for="tel">전화번호</label>
+          <label for="tel">전화번호:</label>
           <input type="tel" id="tel" name="tel" placeholder="cell phone">
           <br/>
           <select id="phone1">
@@ -50,14 +79,21 @@
           <option value="017">017</option>
           </select>
         <span>-</span>
-        <input type="number" id="phone2" name="phone"/>
+        <input type="number" id="phone2" name="phone" class="width"/>
         <span>-</span>
-        <input type="number" id="phone3" name="phone"/>
+        <input type="number" id="phone3" name="phone" class="width"/>
         <br/>
 
         <!--이메일-->
         <label for="email">이메일:</label>
         <input type ="email" id="email" name="email" placeholder="email..."/>
+        <span>@</span>
+        <select id="email2">
+          <option value="naver.com">naver.com</option>
+          <option value="google.com">google.com</option>
+          <option value="daum.net">daum.net</option>
+          <option selected>::도메인::</option>
+        </select>
         <br/>
 
         <!--성별 라디어버튼은 그룹이 형성되어야 한다.
@@ -70,7 +106,7 @@
         <br/>
 
           <!-- 설명란 -->
-          <label for="desc">설명:</label>
+          <label for="desc" class="block">설명</label>
           <textarea rows="5" cols="50"
                     id="desc" name="desc"></textarea>
           <br/>
