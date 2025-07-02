@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <article>
+    <header>
+      <h2>폼 연습</h2>
+    </header>
+    <div>
+      <form action="" method="">
+        <label for="m_name">이름:</label>
+        <input type="text" id="m_name" name="m_name" placeholder="이름">
+        <br/>
+
+        <!--콤보박스-->
+        <select id="s2" name="s2">
+          <option value="seoul">서울</option><!--선택시 서버로 전달될 때에는 seoul이 보내진다.-->
+          <option value="busan">부산</option>
+          <option value="incheon">인천</option>
+          <option selected>::도시선택::</option>
+        </select>
+          <!-- 체크박스 -->
+          <label for="ch1">취미:</label>
+          <!--체크박스들은 하나의 그룹을 구분하는 것이 name으로 구분
+          그래서 하나인 그룹은 name이 같아야 한다. (이름이 같은 요소들이 서버로 전달될때에는 하나의
+          배열로 저장된다.-->
+          <input type="checkbox" id="ch1" name="hobby" value="movie"/>
+          <span>영화감상</span> &nbsp;
+          <input type="checkbox" id="ch2" name="hobby" value="music"/>
+          <span>음악감상</span> &nbsp;
+          <input type="checkbox" id="ch3" name="hobby" value="reading"/>
+          <span>독서</span> &nbsp;
+          <input type="checkbox" id="ch4" name="hobby" value="game"/>
+          <span>게임</span> &nbsp;
+          <input type="checkbox" id="ch5" name="hobby" value="LOL"/>
+          <span>LoL</span>
+          <br/>
+
+          <!--전화번호-->
+          <label for="tel">전화번호</label>
+          <input type="tel" id="tel" name="tel" placeholder="cell phone">
+          <br/>
+          <select id="phone1">
+          <option value="02">02</option>
+          <option value="010">010</option>
+          <option value="011">011</option>
+          <option value="017">017</option>
+          </select>
+        <span>-</span>
+        <input type="number" id="phone2" name="phone"/>
+        <span>-</span>
+        <input type="number" id="phone3" name="phone"/>
+        <br/>
+
+        <!--이메일-->
+        <label for="email">이메일:</label>
+        <input type ="email" id="email" name="email" placeholder="email..."/>
+        <br/>
+
+        <!--성별 라디어버튼은 그룹이 형성되어야 한다.
+          체크박스와 같이 name으로 그룹을 지정한다.-->
+        <label for="gender">성별:</label>
+        <input type ="radio" id = "gender" name="gender" value="0"/>
+        <span>여자</span>
+        <input type="radio" id="gender2" name="gender" value="1"/>
+        <span>남자</span>
+        <br/>
+
+          <!-- 설명란 -->
+          <label for="desc">설명:</label>
+          <textarea rows="5" cols="50"
+                    id="desc" name="desc"></textarea>
+          <br/>
+
+          <!-- 첨부파일 -->
+          <label for="file">첨부파일:</label>
+          <input type="file" id="file" name="file"
+                 placeholder="select file...">
+          <br/>
+          <button type="button">보내기</button>
+
+
+      </form>
+    </div>
+  </article>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  #menu {
+    list-style: none; /*앞의 점을 삭제함!*/
+    width: 300px;
+    padding: 0px;
+    margin: 0;
+    /*border:1px solid blueviolet;*/
+  }
+
+
+  /*  li태그들은 너비를 ul태그와 같게하고 높이를 100px로 지정하자*/
+  #menu > li {
+    width: 100%;
+    height: 100px;
+
+  }
+
+  /*  li태그안에 있는 a태그의 크기를 li와 같도록*/
+  #menu > li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-indent: -9999px;
+
+  }
+
+  /* 아이디가 mail인 요소 안에 있는 a태그의 배경 이미지를 mail.gif로 지정*/
+  #mail {
+    background-image: url("../img/mail.gif");
+    background-repeat: no-repeat; /*반복적용 안함*/
+    background-position: left top;
+  }
+
+  #blog {
+    background-image: url("../img/blog.gif");
+    background-repeat: no-repeat; /*반복적용 안함*/
+    background-position: left top;
+  }
+
+  #cafe {
+    background-image: url("../img/cafe.gif");
+    background-repeat: no-repeat; /*반복적용 안함*/
+    background-position: left top;
+  }
+
+  #kin {
+    background-image: url("../img/kin.gif");
+    background-repeat: no-repeat; /*반복적용 안함*/
+    background-position: left top;
+  }
+
+  /*#mail:hover{background-position: right top;}*/
+  /*#blog:hover{background-position: right top;}*/
+  /*#cafe:hover{background-position: right top;}*/
+  /*#kin:hover{background-position: right top;}*/
+  #menu > li > a:hover {
+    background-position: right top
+  }
+
+</style>
+<body>
+<article>
+  <header>
+    <h2>수직메뉴 연습</h2>
+  </header>
+  <div>
+    <ul id="menu">
+      <li><a href="" id="mail">메일</a></li>
+      <li><a href="" id="blog">블로그</a></li>
+      <li><a href="" id="cafe">카페</a></li>
+      <li><a href="" id="kin">지식인</a></li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>
