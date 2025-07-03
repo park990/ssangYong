@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  #container{
+    width:50%;
+    height:200px;
+    display: flex;
+    background-color: aquamarine;
+    margin: auto;
+  }
+  .item1{
+    background-color: blueviolet;
+    height:100%;
+    flex-grow:0;
+  }
+  .item2{
+    background-color: darkcyan;
+    height:100%;
+    flex-grow:0;
+  }
+  .item3{
+    background-color: chartreuse;
+    height:100%;
+    flex-grow:1;
+  }
+</style>
+<body>
+  <article>
+    <header>
+      <h2>Flex 연습</h2>
+    </header>
+    <div>
+      <div id ="container">
+        <div class="item1">0</div>
+        <div class="item2">0</div>
+        <div class="item3">1</div>
+      </div>
+    </div>
+  </article>
+
+</body>
+</html>

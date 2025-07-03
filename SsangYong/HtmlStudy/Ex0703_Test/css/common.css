@@ -1,0 +1,118 @@
+@charset "UTF-8";
+@import "reset.css";
+#wrap{
+  width:100%;
+  height:100%;
+  margin: auto;
+
+
+}
+
+/*상단 영역*/
+#header{
+  width:970px;
+  height:120px;
+  margin: auto;
+  border: 1px solid black;
+  position: relative; /*아래쪽에 딱 붙게*/
+}
+
+/*header 안에 있는 h1태그의 너비를 181px로 하고 높이는 59px로 하자
+배경이미지는 img폴더에 있는 logo.png로 지정한 후 텍스트는 보이지 않도록*/
+#header>h1{
+  width: 181px;
+  height: 59px;
+  background: url("../img/logo.png") no-repeat;
+  text-indent: -9999px;
+
+}
+
+/*메뉴작업*/
+#header .gnb{
+  width:100%;
+  height:50px;
+  overflow: hidden;
+  display: flex;
+  border: 1px solid crimson;
+  position: absolute;
+  bottom: 0;
+  left:0;
+}
+#header .gnb>li{
+  flex:1 1 194px;
+  height: 100%;
+  background: darkorange;
+  border: 1px solid mediumorchid;
+
+}
+#header .gnb>li>a{
+  display:block;
+  width:auto;
+  height:100%;
+  text-align: center;
+  border: 1px dashed #b3d4fc;
+}
+#header .gnb>li>a>span.menu{
+  display: inline-block;
+  height:20px;
+  line-height: 20px;
+  margin-top: 15px;
+  border: 1px solid cyan;
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  background:url("../img/gnb_bult.png") no-repeat;
+  padding-left: 25px;
+}
+#header .gnb>li>a>span.m01{background-position: 0 0;}
+#header .gnb>li>a>span.m02{background-position: 0 -22px;}
+#header .gnb>li>a>span.m03{background-position: 0 -44px;}
+#header .gnb>li>a>span.m04{background-position: 0 -66px;}
+#header .gnb>li>a>span.m05{background-position: 0 -88px;}
+
+/*********푸터영역 *********/
+#footer{
+  width:auto;
+  /*안쪽여백 좌/우 0px로 위는 40px 아래50px로 지정*/
+  padding:40px 0 50px 0;
+  background: lavenderblush;
+  margin-top: 50px;
+}
+
+#footer .footer_area{
+  width:900px;
+  margin:auto;
+  border: 1px dashed #555555;
+}
+#footer .footer_guide{
+  padding-bottom: 20px;
+  overflow: hidden;
+  border: 2px dashed aquamarine;
+}
+
+#footer .footer_guide li{
+  display: inline-block;
+  padding: 0 10px;
+  border/*-right 해야됨*/: 1px solid blue;
+  border-right: 3px solid gold;
+}
+#footer .footer_guide li:nth-child(2){
+  /*li태그들 중 마지막인 요소 last-child에 있는 오른쪽 선을 없앤다*/
+  border-right: none;
+}
+#footer .footer_guide li a{
+  color: #777;
+  font-size: 12px;
+  font-weight: bold;
+}
+#footer .footer_guide li a:hover{
+  color: darkorange;
+}
+#footer address{
+  font-size: 12px;
+  color: #777;
+  padding-bottom: 6px;
+}
+#footer .copyright{
+
+}

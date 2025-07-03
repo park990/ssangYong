@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  #menu{
+    list-style: none;
+    width: 350px;
+    padding: 0;
+    margin: auto;
+    border: 1px solid red;
+    display: flex;
+  }
+  #menu>li{
+    height:50px;
+    background-color: aquamarine;
+    border: 1px solid black;
+
+  }
+  .item{
+    /*flex-grow: 1;!*남은 공간에서 차지할 영역 지정*!*/
+    /*flex-shrink: 0;!*1이 줄어들때 얼마나 출소될지*!*/
+    /*flex-basis: auto;*/
+    flex:1 0 auto; /*grow shrink basis 순*/
+  }
+</style>
+<body>
+ <article>
+   <header>
+     <h2>박스개념</h2>
+   </header>
+
+   <div>
+     <ul id="menu">
+       <li class="item">메뉴1</li>
+       <li class="item">메뉴2</li>
+       <li class="item">메뉴3</li>
+       <li class="item">메뉴4</li>
+     </ul>
+   </div>
+ </article>
+</body>
+</html>

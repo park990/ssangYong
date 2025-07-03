@@ -1,0 +1,52 @@
+@charset "UTF-8";
+@import "common.css";
+
+#contents{
+  width: 970px;
+  height:auto;
+  margin:auto;
+  border:3px dashed chartreuse;
+  background: lightgrey;
+}
+.title{
+  font-style: unset;
+  padding-bottom: 8px;
+}
+#contents .main_img{
+  width:100%;
+  height:100%;
+  padding-bottom: 30px;
+  border:1px dashed darkgreen;
+}
+span.subject{
+  font-weight: bold;
+  font-size:12px;
+  display:block;
+  padding: 8px 8px 8px 0px;
+
+  white-space: nowrap;      /* 텍스트가 길어져도 줄바꿈을 하지 않음 */
+  overflow: hidden;         /* 요소의 너비를 넘어가는 내용을 숨김 */
+  text-overflow: ellipsis;  /* 숨겨진 텍스트를 말줄임표(...)로 표시 */
+}
+
+div.main_news{
+  display:flex;
+  padding: 40px;
+  border:5px solid #b3d4fc;
+}
+span.writer{
+  padding: 0;
+  border:1px solid black;
+}
+span.moreview{
+  border:1px dashed #222222;
+  position:absolute;
+  right: 0;
+}
+.news_type01{
+  border:1px solid bisque;
+  width:245px;
+  height:245px;
+  margin: auto;
+  position:relative;
+}

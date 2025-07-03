@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #232323;
+  color: white;
+}
+
+#wrap {
+  width: 700px;
+  border: 1px solid white;
+  margin: 50px auto;
+}
+
+ul#carlist {
+  list-style: none;
+}
+
+li.car { /*li태그들 중에 클래스가 car인 요소들*/
+  width: 170px;
+  border: 1px solid white;
+  display: inline-block;
+  text-align: center;
+  margin: 0 0 46px 46px; /*위 오른쪽 아래 좌 (시계방향)*/
+  padding-bottom: 10px;
+}
+
+#wrap a {
+  color: white;
+
+
+}
+
+#wrap > header > h1 {
+  font: bold 35px sans-serif;
+  margin: 10px;
+}
+
+li.car > span > a {
+  font: 11px sans-serif;
+  text-decoration: none;
+}
+
+li.car > a {
+  display: block;
+  width: 160px;
+  height: 120px;
+  border: 5px solid #232323;
+}
+
+li.car > a:hover {
+  border: 5px solid aqua;
+}
