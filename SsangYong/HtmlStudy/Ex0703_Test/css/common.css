@@ -116,3 +116,19 @@
 #footer .copyright{
 
 }
+
+/*b_agree의 너비는 100px b_disagree는 너비가 122
+높이는 둘다 30px 지정*/
+.btn_center{
+  text-align: center;
+}
+.btn{
+  display:inline-block;
+  background: url("../img/btn.png");
+  text-indent: -9999px;
+}
+.btn a{
+  display:block;
+  width:100%;
+  height:100%;
+}

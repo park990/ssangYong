@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+#contents{
+  border:1px solid black;
+  width: 970px;
+  height: 500px;
+  margin: auto;
+}
+#contents h1{
+  background: url("../img/sub_title.png")no-repeat;
+  height: 30px;
+  background-position: 0 -50px;
+  text-indent: -9999px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+
+}
+
+#contents .login_area{
+  background: url("../img/login_bg.png");
+  display: flex;
+  height: 241px;
+  width: 885px;
+  margin-left: 84px;
+  border:1px solid sienna;
+
+}
+.person_login{
+  border:1px solid blueviolet;
+
+}
+.group_login{
+  border:1px solid aqua;
+}
+#contents .login_area .sub_title{ /*위치 값 기억해야지 아래 로그인이랑 맞출수 있음*/
+  height:77px;
+  width:300px;
+  background: url("../img/sub_title.png")no-repeat;
+
+
+}
+#contents .login_area .sub_title.tit03{/*일반개인회원가입 로그인*/
+  text-indent: -9999px;
+  background-position: 0 -79px;
+  /*border:1px solid crimson;*/
+}
+#contents .login_area .sub_title.tit04{/*기관단체회원가입 로그인*/
+  text-indent: -9999px;
+  background-position: 0 -159px;
+}
+
+.login .input_area>p>label{ /*아이디 비번레이블*/
+  /*bult.png*/
+  background: url("../img/bult.png")no-repeat;
+  background-position: 0 -77px;
+  border:1px solid #b3d4fc;
+  padding-left: 10px;
+}
+.login .input_area>p>input{/*아이디비번 텍스트상자*/
+  border-radius: 5px;
+  border:1px solid #888888;
+  width:100px;
+  margin-top: 3px;
+}
+.btn_area .btn {
+  display: inline-block;
+  background: url("../img/btn.png") no-repeat;
+  width:86px;
+  height: 56px;
+  position:absolute;
+  right: 0;
+  top:0;
+}
+
+.input_area{
+  /*border:1px dashed deeppink;*/
+  height:65px;
+
+}
+form{
+  border:1px solid dodgerblue;
+  width:290px;
+  height: 100px;
+
+  position: relative;
+}
+
+.login_area .person_login{
+  width:300px;
+  height: 180px;
+  border:1px solid darkblue ;
+  margin:auto;
+}
+.login_area .group_login{
+  border:1px solid darkblue ;
+  width:300px;
+  margin:auto;
+}
+.login_search .btn{
+  background: url("../img/btn.png")no-repeat;
+  width:156px;
+  height:28px;
+  /*border:1px solid black;*/
+  background-position: -100px 0;
+  position: absolute;
+  right: 0;
+}
+
+#s_id{
+margin-left: 12px;
+}
+
+#s_id2{
+  margin-left: 12px;
+}
+.login .input_area>p>
