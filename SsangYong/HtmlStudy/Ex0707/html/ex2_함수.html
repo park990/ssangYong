@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <button type="button" onclick="test1()">버튼1</button> &nbsp;
+  <button type="button" onclick="test2('버튼2',100)">버튼2</button> &nbsp;
+  <button type="button" onclick="test3(this)">버튼3</button> &nbsp;
+  <button type="button" onclick="test4()">버튼4</button> &nbsp;
+  <p/>
+  <input type="text" id="txt" value="하이"/>
+  <br/>
+  <br/>
+  <textarea cols="30" rows="5" id="ta">안녕하세요</textarea>
+  <br/>
+  <br/>
+  <input type="checkbox" id="ch1" name="chk" value="항목1"/>
+  <label for="ch1">Item1</label>
+  &nbsp;
+  <input type="checkbox" id="ch2" name="chk" value="항목2"/>
+  <label for="ch1">Item2</label>
+  &nbsp;
+  <input type="checkbox" id="ch3" name="chk" value="항목3"/>
+  <label for="ch1">Item3</label>
+  &nbsp;
+
+  <script>
+
+    //현재문서에서 아이디가 ta인 요소를 변수 ta에 저장
+    let ta = document.getElementById("ta")
+
+    function test1(){
+      //현재문서에서 아이디가 txt인 요소를 검색하여 변수 txt에 저장하자!
+      let txt=document.getElementById("txt")
+
+      let v1=txt.value; //txt에 있는 값을 가지고 올때
+      txt.value="화이탱@@~!" //이것은 값 설정
+    }
+    function test2(str,su){
+      ta.innerText=str;
+    }
+    function test3(obj){
+      //여기서 obj라는 인자는 호출될때 this를 넣어 보냈기 때문에 해당 태그가 된다.
+      let str=obj.innerText;
+      ta.innerText=str;
+    }
+    function test4(){
+      //현재문서에서 이름이 chk인 모든 요소들을 검색하여
+      // 변수 ar에 저장한다.(검색되는 요소가 여러개일 겨우 무조건 배열로 잡힌다.)
+      let ar =document.getElementsByName("chk")
+      let size= ar.length// 검색된 배열의 길이
+      ta.innerText=ar[0].value;
+      alert(size)
+
+      //ar이라는 변수는 체크박스 모두를 가지고 있따
+      // 어떤 체크박스가 선택된 상태인지를 알아내보자
+      for (let i = 0; i < ar.length; i++) {
+        // console.log(ar[i].checked)
+      //선택된 체크박스의 값(value)만 출력하자
+      if(ar[i].checked)
+        consol.log(ar[i].value)
+      }
+    }
+  </script>
+
+</body>
+</html>

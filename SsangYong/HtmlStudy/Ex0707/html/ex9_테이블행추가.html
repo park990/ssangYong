@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #table{
+      width:350px;
+      border-collapse: collapse;
+    }
+    #table th, #table td{
+      border:1px solid black;
+      padding: 5px;
+    }
+    #table>caption{
+      text-indent: -9999px;
+      height: 0;
+    }
+
+    /*ID가 table요소의 thread안에 있는 tr들 중 첫번째 tr만 선택하여
+    선을 없애고 오른쪽 맞춤을 설정하자*/
+    #table thead>tr:first-child td{
+      border:none;
+      text-align: right;
+
+    }
+
+  </style>
+</head>
+<body>
+<article>
+  <header><h2>테이블 행 추가</h2></header>
+
+  <div>
+    <table id="table">
+      <caption>행추가 테이블</caption>
+
+      <thead>
+      <tr>
+        <td colspan="3">
+          <button type="button" onclick="exe()">행추가</button>
+        </td>
+      </tr>
+      <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>연락처</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+
+    </table>
+  </div>
+</article>
+
+<script>
+  let idx=1;
+  function  exe(){
+    // 테이블에서 행추가라는 것은 tr을 생성하고 필요한 수만큼 td를 생성한 후
+    // tr에 추가해야 한다. tr에 추가할 td를 3개 만들자
+    let td1 =document.createElement("td");//<td></td>
+    let td2 =document.createElement("td");//<td></td>
+    let td3 =document.createElement("td");//<td></td>
+
+    // 첫번째 td에 번호를 넣어보자 (<td>1</td>)
+    td1.innerText=idx++;
+    td2.innerText="마루치"
+    td3.innerText="010-1234-5678"
+
+    //위에 td들을 저장할 tr생성
+    let tr= document.createElement("tr")//태그 만들 때는 무조건 크리에이트 엘리먼트<tr></tr>
+
+    //생성된 tr안에 위에서 만든 td들을 자식요소로 추가한다.
+    tr.appendChild(td1)
+    tr.appendChild(td2)
+    tr.appendChild(td3)//<tr>  <td>1</td><td>마루치</td><td>010-1234-5678</td>  </tr>
+
+    //원하는 테이블의 tbody를 얻어낸다.
+    let tbody = document.getElementById("table").children[2];
+
+    //검색된 tbody에 위에서 생성한 tr을 자식으로 추가한다.
+    tbody.appendChild(tr);
+
+
+  }
+</script>
+</body>
+</html>

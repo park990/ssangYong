@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  #box{
+    width:350px;
+    height:400px;
+    border:1px solid black;
+  }
+</style>
+<body>
+  <button type="button" onclick="ex1(this)">2단</button>&nbsp;
+  <button type="button" onclick="ex1(this)">3단</button>&nbsp;
+  <button type="button" onclick="ex1(this)">4단</button>&nbsp;
+  <button type="button" onclick="ex1(this)">5단</button>&nbsp;
+  <button type="button" onclick="ex1(this)">6단</button>&nbsp;
+  <button type="button" onclick="ex1(this)">7단</button>&nbsp;
+  <button type="button" onclick="ex1(this)">8단</button>&nbsp;
+  <button type="button" onclick="ex1(this)">9단</button>&nbsp;
+  <br/>
+  <br/>
+
+  <div id = "box"></div>
+
+  <script>
+    let box = document.getElementById("box")
+    function ex1(obj){
+       let str=obj.innerText;
+       let dan = str.at(0)
+
+        let stra=dan+"단<br/>"
+         for(let i=1;i<10;i++){
+            stra+=dan+"*"+i+"="+(dan*i)+"<br/>";
+         }
+         box.innerHTML=stra;
+
+    }
+  </script>
+</body>
+</html>

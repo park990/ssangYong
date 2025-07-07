@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #table{
+      width:350px;
+      border-collapse: collapse;
+    }
+    #table th, #table td{
+      border:1px solid black;
+      padding: 5px;
+    }
+    #table>caption{
+      text-indent: -9999px;
+      height: 0;
+    }
+
+    /*ID가 table요소의 thread안에 있는 tr들 중 첫번째 tr만 선택하여
+    선을 없애고 오른쪽 맞춤을 설정하자*/
+    #table thead>tr:first-child td{
+      border:none;
+      text-align: right;
+
+    }
+
+  </style>
+</head>
+<body>
+  <article>
+    <header><h2>테이블 행 추가</h2></header>
+
+  <div>
+    <table id="table">
+      <caption>행추가 테이블</caption>
+
+    <thead>
+    <tr>
+      <td colspan="3">
+        <button type="button" onclick="exe()">행추가</button>
+      </td>
+    </tr>
+    <tr>
+      <th>번호</th>
+      <th>이름</th>
+      <th>연락처</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+
+    </table>
+  </div>
+  </article>
+
+<script>
+  let idx=1;
+  function  exe(){
+    //행추가 버튼을 누를 때마다 수행하는곳!
+    //tr을 만들자
+    let str= "<tr><td>"+idx+"</td><td></td><td></td></tr>"
+
+    //table을 먼저 알아낸다. (다행히 tabel은 id를 가진다.)
+    let table =document.getElementById("table")
+    let tbody=table.children[2] //세번쨰 자식이 tbody다.
+    let msg = tbody.innerHTML+str;
+    tbody.innerHTML=msg;
+    ++idx;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form action="" method="post" name="form1">
+
+  <label for="s_id">ID:</label>
+  <input type="text" id = "s_id" name ="m_id" data-item="아이디" data-desc><br/>
+
+  <label for="s_pw">PW:</label>
+  <input type="password" id = "s_pw" name ="m_pw" data-item="비밀번호"><br/>
+
+  <label for="s_name">NAME:</label>
+  <input type="text" id = "s_name" name ="m_name" data-item="이름"><br/>
+
+  <label for="s_loc">LOC:</label>
+  <input type="text" id = "s_loc" name ="m_loc" data-item="거주지"><br/>
+  <button type="button" onclick="login()">LOGIN</button>
+</form>
+
+<script>
+  function login(){
+    // 현재문서에서 첫번쨰 폼을 가져온다.
+    let ff=document.forms[0]
+    console.log(ff.method+","+ff.name) //(input, select,button, textarea)
+
+    let sub =ff.elements
+    console.log(sub.length)
+
+    //마지막에 들어온 버튼은 유효성 검사에서 제외시키는 반복문
+    for(let i=0;i<sub.length-1;i++){
+      //하위 요소에 저장된값(value)를 가져온다.
+      let str=sub[i].value.trim()
+      if(str.length==0){
+        // alert(sub[i].name+"을 입력하세요")
+        let item=sub[i].dataset.item;
+        alert(item+"를(을) 입력하세요");
+        sub[i].value="";
+        sub[i].focus();
+        return;
+      }
+    }//for 의 끝
+  }
+</script>
+</body>
+</html>

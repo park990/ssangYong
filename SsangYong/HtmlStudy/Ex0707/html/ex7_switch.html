@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+<style>
+  #box{
+    width:300px;
+    height: 120px;
+    border:1px solid black;
+  }
+</style>
+</head>
+<body>
+  <form action="" method="post">
+    <label for="m_car">차종:</label>
+    <select id ="m_car" name="car" onchange="ex(this.selectedIndex)">
+      <option>::선택하세요::</option>
+      <option value="g">::그랜저::</option>
+      <option value="b">::벤틀리::</option>
+      <option value="m">::마세라티::</option>
+
+    </select>
+
+  </form>
+  <div id="box"></div>
+
+<script>
+  function  ex(idx){
+    // console.log(idx)
+    // console.log(document.getElementById("m_car").options[idx].value)
+    if(idx==0)
+      return;
+    let msg="";
+    switch (idx){
+      case 1:
+        msg="진짜 나쁜놈";
+        break;
+
+      case 3:
+        msg="기분 나쁜놈";
+        break;
+
+      case 2:
+        msg="부러운 놈";
+        break;
+    }
+    let ta= document.getElementById("box")
+    ta.innerText=msg;
+  }
+</script>
+
+</body>
+</html>
