@@ -24,9 +24,15 @@
     let c_year = now.getFullYear();
 
     // 현재 날짜를 객체로 구한다.
-    let age = (c_year - b_year + 1)
     if (b_year.length > 0) {
-      checkNumber(age)
+      if(checkNumber(b_year)){
+        alert(c_year-b_year+1)
+      }else{
+        alert("숫자만 입력하세요")
+      }
+
+    } else {
+      alert("입력해주세요")
     }
 
 
