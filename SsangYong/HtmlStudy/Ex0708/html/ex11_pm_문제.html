@@ -151,11 +151,13 @@
       //바디안의 체크박스들을 클릭하였을 때
     $("#table tbody input:checkbox").on("click",function (){
       //마루치의 체크박스에 체크된 true의 값이 5면 비고에 "쳭크"
-      let ar=$("#table>tbody>tr:nth-child(1)").find(":checked")
-      if(ar.length==5){
-        $("#table>tbody>tr:nth-child(8)").text("올클릭")
+      let ar=$(this).closest("tr");
+      let char=ar.find("input:checked");
+      if(char.length==5){
+        ar.find("td:last").text("올클릭");
+      }else{
+        ar.find("td:last").text("");
       }
-      console.log(ar.length)
     });
 
 
