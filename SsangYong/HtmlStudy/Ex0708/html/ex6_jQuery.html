@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #box{
+      width: 300px;
+      height: 300px;
+      border: 1px solid #000;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>과목</h1>
+<button type="button" id="btn">확인</button>
+<ul>
+  <li>JAvaScript</li>
+  <li>ActionScript</li>
+  <li>TypeScript</li>
+  <li>CoffeeScript</li>
+</ul>
+<ul>
+  <li>Java</li>
+  <li>C++</li>
+  <li>Python</li>
+  <li>SpringBoot</li>
+</ul>
+<div id="box"></div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+  $(function (){
+    //아이디가 btn인 요소에 클릭이벤트를 줄 것이다.
+    $("#btn").click(function (){
+      //li태그들 모두를 ar에 저장하자
+      let ar=$("li");
+
+      //아이디가 box인 요소에 html값으로 li태그들을 넣어준다.
+      $("#box").html(ar)
+    });
+  });
+</script>
+</body>
+</html>

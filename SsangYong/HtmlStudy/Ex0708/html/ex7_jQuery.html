@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <h1>jQuery함수 활용</h1>
+<div id="wrap">
+  <header><h2>제목1</h2></header>
+
+  <section>
+    <form action="" method="">
+      <input type="radio" value="public" name="rdo" checked/>공개용&nbsp;
+      <input type="radio" value="private" name="rdo"/>비공개용&nbsp;
+      <input type="radio" value="test" name="rdo"/>테스트용&nbsp;
+    </form>
+  </section>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+  <script>
+    $(function (){
+      //아이디가 wrap인 요소 안에잇는 태그들 중 속성값이 radio라고되어 있는 모든 요소들을 검색하여 변수 ar에 저장하자.
+      // let ar = $("#wrap").find("[type=radio]");
+      let ar = $("#wrap").find(":radio");
+
+      //검색된 결과인 ar의 마지막 radio 버튼을 가져와서 선택이 되도록 설정해보자!
+      // $(ar[ar.length-1]).prop("checked",true);
+      ar.eq(ar.length-1).prop("checked",true)//ar의 2번지와 equls한걸 찾아라 ar2.prop("checked",true)
+    });
+  </script>
+</body>
+</html>

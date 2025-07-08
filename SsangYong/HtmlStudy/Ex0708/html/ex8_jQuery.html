@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>next()함수 활용</h1>
+<input type="checkbox" id="ch1" value="0"/>
+<label for="ch1">공개용</label>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+  $(function (){
+  // id가 ch1인 요소의 클릭이벤트를 적용하자
+    $("#ch1").click(function (){
+
+      //ch1이체크된 상태면 true 아니면 false
+    console.log($(this).is(":checked"))
+
+      //체크박스가 체크된 상태면 "비공개용" 그렇지 않다면 "공개용"
+      if($(this).is(":checked"))
+        $(this).next().text("비공개용")
+      else
+        $(this).next().text("공개용")
+
+    })
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <h1>여기는 h1요소입니다.</h1>
+  <h2>여기는 h2요소입니다.</h2>
+  <h1>여기는 h1요소입니다.</h1>
+  <h1>여기는 h1요소입니다.</h1>
+  <h1>여기는 h1요소입니다.</h1>
+  <h2>여기는 h2요소입니다.</h2>
+  <br/>
+  <button type="button" id="btn1" onclick="test1()">자바스크립트</button>
+  <button type="button" id="btn2" onclick="test2()">제이쿼리</button>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+
+</script>
+<script>
+  function test1(){
+   let h1_ar=document.getElementsByTagName("h1")
+
+   for(let i=0; i<h1_ar.length;i++){
+     h1_ar[i].style.color="#00bfff"
+
+   }
+  }
+
+  function test2(){
+    //h2모두에게 전경색을 빨강으로 조정 (JQUERY)
+
+    $("h2").css("color","#ff0000") // $("h2") h2태그들을 모두 선택해라
+    $("#btn2").css("color","#ff0000")
+    $("#btn2").html("jQuery")
+
+  }
+</script>
+</html>

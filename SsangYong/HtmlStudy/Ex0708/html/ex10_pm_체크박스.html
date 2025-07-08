@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #table {
+      width: 600px;
+      border-collapse: collapse;
+    }
+    #table td{
+      border:1px solid #000;
+    }
+    #table thead td{
+      border:none;
+    }
+    .w30{
+      width: 30px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>jQuery를 활용한 전체선택</h1>
+  <table id="table">
+   <caption>체크박스 테이블</caption>
+   <thead>
+    <tr>
+      <td colspan="2">
+      <input type="checkbox" id="all"/>
+      <label for="all">전체선택</label>
+      </td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+      <td class="w30">
+        <input type="checkbox" id="ch1" name="chk"/>
+      </td>
+      <td>
+        항목1
+      </td>
+    </tr>
+    <tr>
+      <td class="w30">
+        <input type="checkbox" id="ch2" name="chk"/>
+      </td>
+      <td>
+        항목2
+      </td>
+    </tr>
+    <tr>
+      <td class="w30">
+        <input type="checkbox" id="ch3" name="chk"/>
+      </td>
+      <td>
+        항목3
+      </td>
+    </tr>
+    <tr>
+      <td class="w30">
+        <input type="checkbox" id="ch4" name="chk"/>
+      </td>
+      <td>
+        항목4
+      </td>
+    </tr>
+    <tr>
+      <td class="w30">
+        <input type="checkbox" id="ch5" name="chk"/>
+      </td>
+      <td>
+        항목5
+      </td>
+    </tr>
+   </tbody>
+  </table>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+  <script>
+
+    $(function () {
+
+      //id가 all인 요소에 클릭할 때마다 수행하는 이벤트 등록
+      $("#all").on("click", function () {
+        //tbody안에 있는 모든 checkbox를 검색하여 변수 ar에 저장
+        let ar = $("#table>tbody").find(":checkbox");
+
+        //검색된 체크박스들과 현재 클릭한 all의 상태를 확인하자
+        // console.log(this.checked)
+        ar.prop("checked", this.checked)
+
+        if (this.checked)
+          $(this).next().text("선택해제")
+        else
+          $(this).next().text("전체선택")
+
+      });
+
+      //tbody안에 있는 체크박스들을 클릭했을때마다 수행하는
+      $("#table>tbody input:checkbox").click(function () {
+        // let ar =$("#table>tbody").find(":checkbox");
+        // let chk=true;
+        //
+        // for(let i=0;i<ar.length;i++){
+        //   if(!$(ar[i]).is(":checked")){
+        //     chk=false;
+        //     break;
+        //
+        //   }
+        // }
+        // $("#all").prop("checked",chk);
+        //
+        // if(chk){
+        //   $("#all").next().text("선택해제")
+        // }else
+        //   $("#all").next().text("전체선택")
+
+        //tbody에 있는 체크박스들 중 체크가 되어있는 체크박스들의 수를 구해서 변수
+        //ch_len에 저장하자.
+
+        let ch_len = $("#table>tbody input[type=checkbox]:checked").length;
+
+        //이제 tbody안에 존재하는 모든 체크박스의 수
+        let len = $("table>tbody input[type=checkbox]").length;
+
+        if(len==ch_len){
+          $("#all").prop("checked".true);
+          $("#all").next().text("선택해제")
+        }else{
+          $("#all").prop("checked".false);
+          $("#all").next().text("전체선택")
+        }
+
+      });
+    });
+
+  </script>
+</body>
+</html>

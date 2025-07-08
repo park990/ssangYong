@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button type="button" id="btn">CSS적용</button>
+<p/>
+<p>p요소1</p>
+<p>p요소2</p>
+<p>p요소3</p>
+<a href="">a요소1</a>
+<p>p요소4</p>
+<p>p요소5</p>
+<p>p요소6</p>
+<p>p요소7</p>
+<a href="">a요소2</a>
+<p>p요소8</p>
+<p>p요소9</p>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+
+</script>
+<script>
+  // $(document).ready(function (){
+  $(function () {
+    console.log("ㅅ자ㄱ");
+    $("#btn").click(function () {
+      //아이디가 btn인 버튼을클릭할때마다 수행하는곳
+      // $("p").css("color", "#f00")
+
+      //짝수번째에 있는 p요소들만 변경한다면
+      let ar = $("p")
+      for(let i=0;i<ar.length;i++){
+        if(i%2==0){
+          ar[i].style.color="#f00"
+          // ar[i].css("color","#foo")// 앞에는 스크립트 문장이고 뒤에는 Jquery다 겹쳐썻기 떄문에 안댐.
+          //$(ar[i]).css 이런식으로 해야된다.
+        }
+      }
+
+    });
+
+  });
+
+</script>
+
+</body>
+</html>
