@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+</head>
+<body>
+  <input type="text" id="reg_date" name="reg_date"/>
+
+  <br/>
+<button type="button">버튼1</button>
+<button type="button" class="btn">버튼2</button>
+<button type="button" class="btn">버튼3</button>
+</body>
+
+<br/>
+<a href="">다음페이지</a>
+<a href=""  class="btn">이전페이지</a>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+<script>
+
+  $(function (){
+    $( "#reg_date" ).datepicker({
+      dayNamesMin: [ "일", "월", "화", "수", "목", "금", "토" ],
+      monthNames: [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" ],
+      showMonthAfterYear:true,
+      yearSuffix:"년",
+      dateFormat:"yy-mm-dd",
+    });
+    $(".btn").button({
+
+    });
+  });
+</script>
+</html>

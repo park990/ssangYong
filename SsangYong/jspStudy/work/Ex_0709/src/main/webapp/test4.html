@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #o, #phon2, #phon3{
+        width: 45px;
+    }
+    #div{
+        width: 250px;
+        text-align: right;
+        position: relative;
+    }
+    #btn{
+    }
+</style>
+<body>
+    <article>
+        <header><h2>문제</h2></header>
+
+    <div id="div">
+    <form action="/MyServlet4" method="post">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id"/>
+        <br/>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"/>
+        <br/>
+
+        <label for="o">Phone:</label>
+        <select id="o" name="phone">
+            <option>02</option>
+            <option>010</option>
+            <option>070</option>
+        </select>
+        <span>-</span>
+        <input id="phon2" name="phone">
+        <span>-</span>
+        <input id="phon3" name="phone">
+        <br/>
+
+        <label>Hobby:</label>
+        <input type="checkbox" name="chk" value="read">독서</input>
+        <input type="checkbox" name="chk" value="movie">영화</input>
+        <input type="checkbox" name="chk" value="game">게임</input>
+        <br/>
+
+        <button type="button" onclick="exe(this.form)" id="btn">저장</button>
+    </form>
+    </div>
+    </article>
+
+<script>
+    function exe(fm){
+        fm.submit()
+    }
+</script>
+</body>
+</html>

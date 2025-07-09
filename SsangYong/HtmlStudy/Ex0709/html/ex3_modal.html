@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+  <style>
+    #login{
+
+    }
+    .w100{
+      width:100px;
+    }
+  </style>
+</head>
+<body>
+<button type="button" class="btn" id="login_btn">로그인</button>
+
+<!--로그인 창-->
+<div id="login" title="로그인">
+  <table>
+    <CAPTION>로그인 테이블</CAPTION>
+
+    <tbody>
+    <tr>
+      <td><label for="s_id">아이디</label></td>
+      <td><input type="text" id="s_id" name="s_id" class="w100"/></td>
+    </tr>
+    <tr>
+      <td><label for="s_pw">비밀번호</label></td>
+      <td><input type="password" id="s_pw" name="s_pw" class="w100"/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><button type="button" class="btn">로그인</button></td>
+      <td colspan="2"><button type="button" class="btn" id="close_btn">닫기</button></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+<br/>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+<script>
+  let option= {
+    modal:true,
+    autoOpen:false,// 호출즉시 대화상자 표시(기본값:true)
+    title: "SIST교육센터",
+    resizable:false,
+    position:{my: "left top",at:"right bottom",of:"#login_btn"}
+    //my: 자신의 기준위치(left, right, top, bottom,center)
+    //at: 기점이 되는 요소의 기준 위치(left, right, top, bottom,center)
+    //of: 기점이 되는 요소(선택자로 지정)
+  }
+  $(function (){
+    $(".btn").button();
+    $("#login").dialog(option);
+    $("#login_btn").on("click",function (){
+      $("#login").dialog("open");
+    })
+    $("#close_btn").on("click",function (){
+      $("#login").dialog("close");
+    })
+  });
+</script>
+</body>
+</html>
