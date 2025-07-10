@@ -20,23 +20,28 @@ public class MyServlet4 extends HttpServlet {
         String names = request.getParameter("name");
         String[] phones = request.getParameterValues("phone");
         String[] hobbys = request.getParameterValues("chk");
-        
+
         //응답을 위한 한글
-        response.setContentType("text/html; charset=utf-8");
+        response.setContentType("text/html; charset=utf-8");// text인데 html형식
 
         PrintWriter ot = response.getWriter();
-        ot.println("ID: "+ids+"<br/>");
-        ot.println("이름: "+names+"<br/>");
+        ot.println("ID: " + ids + "<br/>");
+        ot.println("이름: " + names + "<br/>");
 
-        for(int i=0;i<phones.length;i++){
+        for (int i = 0; i < phones.length; i++) {
             ot.println(phones[i]);
+            if(i<phones.length-1) //i가 2보다 작으면 "-"를 출력한다.
+                ot.println("-");
         }
         ot.println("<br/>");
 
-        for(int i=0;i<phones.length;i++){
-            ot.println(hobbys[i]);
+        if(hobbys!=null) {
+            for (int i = 0; i < hobbys.length; i++) {
+                ot.println(hobbys[i]);
+                if (i < hobbys.length - 1) //i가 2보다 작으면 ","를 출력한다.
+                    ot.println(","); // 마지막에는 쉼표
+            }
         }
-
-
+        ot.close();
     }
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="emp">
+    <select id ="all" resultType="mybatis.vo.EmpVO">
+        select * from emp
+    </select>
+    <select id ="search" resultType="mybatis.vo.EmpVO" parameterType="String">
+        select * from emp where empno = #{string}
+    </select>
+    <select id ="search1" resultType="mybatis.vo.EmpVO" parameterType="Map">
+        select * from emp
+        <trim prefix="where">
+            <choose>
+                <when test="searchType != null and searchType==0">
+                    empno = #{searchValue}
+                </when>
+                <when test="searchType != null and searchType==1">
+                    ename like concat('%', #{searchValue},'%')
+                </when>
+                <when test="searchType != null and searchType==2">
+                    job like concat('%', #{searchValue},'%')
+                </when>
+                <when test="searchType != null and searchType==3">
+                    deptno =#{searchValue}
+                </when>
+            </choose>
+        </trim>
+    </select>
+</mapper>
