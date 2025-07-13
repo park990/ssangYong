@@ -5,10 +5,10 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memo">
     <select id="all" resultType="mybatis.vo.memoVO">
-        select * from memo
+        select * from memo_t
     </select>
     <insert id="add" parameterType="mybatis.vo.memoVO">
-        insert into memo_t(writer, content)
-        values(#{writer}, #{content})
+        insert into memo_t(writer, content,reg_date)
+        values(#{writer}, #{content}, #{reg_date})
     </insert>
 </mapper>
