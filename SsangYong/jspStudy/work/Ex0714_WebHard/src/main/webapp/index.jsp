@@ -14,6 +14,10 @@
             height: 20px;
             text-align: center;
             padding:0px;
+
+        }
+        .inli{
+            display: inline-block;
         }
         .btn a{
             display: block;
@@ -84,9 +88,14 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <p class="btn">
+                    <p class="btn inli">
                         <a href="javascript:exe()">
                             로그인
+                        </a>
+                    </p>&nbsp;
+                    <p class="btn inli">
+                        <a href="reg.jsp">
+                            회원가입
                         </a>
                     </p>
                 </td>

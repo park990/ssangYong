@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+    <select id="login" parameterType="Map" resultType="mybatis.vo.memberVO">
+        select * from member_t where mem_id =#{id} and mem_pw=#{pw} and mem_quit=0
+    </select>
+
+    <insert id="add" parameterType="mybatis.vo.memberVO">
+        insert into member_t(mem_id, mem_pw,mem_name,mem_phone,mem_quit)
+        values(#{mem_id},#{mem_pw},#{mem_name},#{mem_phone},0)
+    </insert>
+    <select id="id_dup" parameterType="String" resultType="mybatis.vo.memberVO">
+        select * from member_t where mem_id =#{id}
+    </select>
+</mapper>

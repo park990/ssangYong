@@ -6,9 +6,10 @@
 <mapper namespace="memo">
     <select id="all" resultType="mybatis.vo.memoVO">
         select * from memo_t
+        order by idx
     </select>
-    <insert id="add" parameterType="mybatis.vo.memoVO">
-        insert into memo_t(writer, content,reg_date)
-        values(#{writer}, #{content}, #{reg_date})
+    <insert id="add" parameterType="Map">
+        INSERT INTO memo_t(writer, content, reg_date, ip)
+        VALUES(#{writer}, #{content}, NOW(), #{ip})
     </insert>
 </mapper>

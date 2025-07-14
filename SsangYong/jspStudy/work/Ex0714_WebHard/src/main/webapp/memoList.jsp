@@ -1,6 +1,7 @@
 <%@ page import="mybatis.dao.memoDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="mybatis.vo.memoVO" %>
+<%@ page import="mybatis.vo.memberVO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
@@ -111,6 +112,8 @@
     Object obj =session.getAttribute("mvo");
     if(obj==null)
         response.sendRedirect("index.jsp"); // 강제 페이지 이동
+    memberVO mvo =(memberVO) obj;
+
     String msg = null;
     if (cmd != null && cmd.equals("1"))
         msg = "저장완료";
@@ -179,7 +182,7 @@
                 <td>
                     <input type="text" id="writer"
                            name="writer"
-                    />
+                           value="<%=mvo.getMem_name()%>" readonly />
                 </td>
             </tr>
             <tr>
