@@ -6,7 +6,7 @@
 
     memberVO mvo = memberDAO.isdup(id);
     if (mvo != null) //아이디가 데이터베이스에 존재한다면
-        response.sendRedirect("reg.jsp?m_id=" + id + "mode=1");
+        response.sendRedirect("reg.jsp?m_id=" + id + "&mode=1");
     else
-        response.sendRedirect("reg.jsp?m_id=" + id + "mode=0");
+        response.sendRedirect("reg.jsp?m_id=" + id + "&mode=0");
 %>

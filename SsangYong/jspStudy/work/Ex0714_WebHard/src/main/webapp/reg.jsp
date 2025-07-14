@@ -66,6 +66,9 @@
     </style>
 </head>
 <body>
+<% String mode = request.getParameter("mode");
+    String m_id = request.getParameter("m_id");
+%>
 <article>
     <header><h2>회원가입</h2></header>
     <div>
@@ -76,22 +79,18 @@
                 <tr>
                     <td><label for="u_id">아이디:</label></td>
                     <td>
-                        <input type="text" id="u_id" name="u_id"/>
+                        <input type="text" id="u_id" name="u_id" value="<%if(m_id != null) out.print(m_id);%>"/>
                         <button type="button" id="chk_btn">중복확인</button>
-                        <% String mode= request.getParameter("mode");
-                            String msg=null;
-                        %>
                         <div id="box"><%%>
                             <%
-                                if(mode!=null &&mode.equals("1")){
-                                    out.print("사용가능");
-                                }else if(mode!=null &&mode.equals("0")){
+                                if (mode != null && mode.equals("1")) {
+                                    out.print("사용불가");
+                                } else if (mode != null && mode.equals("0")) {
                                     out.print("사용가능");
                                 }
                             %>
                         </div>
                         <%--*************************사용가능 or 사용불가능**********************************--%>
-
                     </td>
                 </tr>
                 <tr>
@@ -130,13 +129,23 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
+
+    let check = "none";
+    <%
+     if("0".equals(mode)) {
+       out.print("check='ok';");
+    }else if("1".equals(mode)){
+    out.print("check = 'fail';");
+    }
+    %>
+
     function send() {
         let mId = $("#u_id").val().trim();
         let mPw = $("#u_pw").val().trim();
         let mName = $("#u_name").val().trim();
 
         if (mId.length == 0) {
-            alert("아이디를 입력하세요");
+            alert("아이   디를 입력하세요");
             $("#u_id").val("")
             $("#u_id").focus();
             return;
@@ -153,13 +162,26 @@
             $("#u_name").focus();
             return;
         }
-        let frm = document.forms[0];
-        frm.action = "regMember.jsp";
-        frm.method = "post";
-        frm.submit();
+        if (check != 'ok') {
+            alert("아이디확인");
+            return;
+        } else {
+            let frm = document.forms[0];
+            frm.action = "regMember.jsp";
+            frm.method = "post";
+            frm.submit();
+        }
     }
 
     $("#chk_btn").on("click", function () {
+        let mId = $("#u_id").val().trim();
+
+        if (mId.length == 0) {
+            alert("아이디를 입력하세요");
+            $("#u_id").val("");
+            $("#u_id").focus();
+            return;
+        }
         document.f_d.submit();
     })
 </script>
