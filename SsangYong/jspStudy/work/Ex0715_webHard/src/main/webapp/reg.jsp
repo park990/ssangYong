@@ -97,7 +97,7 @@
                         <input type="text" id="u_id" name="u_id"/>
 <%--                        <button type="button" id="chk_btn" onclick="chkID()">중복확인</button>--%>
                         <div id="box"><%--사용가능 또는 사용불가 --%>
-
+<%--                            <p id="chk" class="success">사용가능</p>  ==> p 태그 전체가 통째로 result로 오는 것임 중복일 경우엔 idCheck.jsp의 다른 값이 오겠지 --%>
                         </div>
                     </td>
                 </tr>

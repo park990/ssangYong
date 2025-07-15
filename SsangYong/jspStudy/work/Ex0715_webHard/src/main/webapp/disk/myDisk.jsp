@@ -83,14 +83,6 @@
             border-radius: 3px;
         }
 
-        .hide {
-            display: none;
-        }
-
-        .show {
-            display: block;
-        }
-
         div#box {
             display: inline-block;
             width: 65px;
@@ -147,6 +139,7 @@
             }
 
         }
+
 %>
 
 <h1>My Disk Service</h1>
@@ -201,7 +194,7 @@
     <tbody>
     <tr>
         <td></td>
-        <td><a href="javascript:back(<%=dir%>)">상위로</a></td>
+        <td><a href="javascript:back()">상위로</a></td>
         <td></td>
     </tr>
 
@@ -221,7 +214,7 @@
     %>
 
     <tr>
-        <td><%if (f.isFile()) out.print("파일");%></td>
+        <td><%if ( f.isFile()) out.print("파일");%></td>
         <td>
 
             <% if (f.isDirectory()) { //디렉토리일 경우는 들어갈 수 있어야 한다. %>
@@ -244,7 +237,7 @@
 </table>
 <form name="ff" method="post">
     <input type="hidden" name="f_name"/>
-    <input type="hidden" name="cPath" value="<%=dir%>"/>
+    <input type="hidden" name="cPath" value="<%=dir%>"/> <%--1111/123--%>
 </form>
 <%
     } else
@@ -266,11 +259,15 @@
         document.ff.submit();
     }
 
-    function back(path) {
-        document.ff.f_name.value = path;
-        document.ff.action = "myDisk.jsp"
-        document.ff.submit();
-
+    function back() {
+        if(document.ff.cPath.value.indexOf("/") !== -1) { // ==> cPath = 1111/123
+            let slashIndex = document.ff.cPath.value.lastIndexOf("/");
+            let expectedDir = document.ff.cPath.value.substring(0, slashIndex); // ==> expectedDir = 1111
+            document.ff.cPath.value = expectedDir; // ==> cPath = 1111
+            document.ff.f_name.value = "";
+            document.ff.action = "myDisk.jsp"
+            document.ff.submit();
+        }
     }
 </script>
 </body>
