@@ -20,6 +20,7 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+
     <style>
 
         table {
@@ -47,7 +48,8 @@
             text-align: center;
             padding: 0px;
             display: inline-block;
-            margin-left: 5px;
+            margin-right: 20px;
+
         }
 
         .btn a {
@@ -104,7 +106,7 @@
             font-size: 11px;
         }
 
-        div#my_alert {
+        div#my_alert, #upload_win, #folder_win {
             display: none;
         }
 
@@ -138,9 +140,11 @@
                 dir = dir + "/" + fname;
             }
         }
+        //dir이 구해진 후 나중에 파일 올리기를 할 때 upload.jsp에서 필요하므로 세션에 미리 저장하자
+        session.setAttribute("dir", dir);
 
-        String r_path =application.getRealPath("/members/"+mvo.getM_id());
-        useSize=useSize(new File(r_path));
+        String r_path = application.getRealPath("/members/" + mvo.getM_id());
+        useSize = useSize(new File(r_path));
 
 %>
 
@@ -155,25 +159,28 @@
     <tbody>
     <tr>
         <th class="title">전체용량</th>
-        <td><%=totalSize/1024%><%="KB"%></td>
+        <td><%=totalSize / 1024%><%="KB"%>
+        </td>
     </tr>
     <tr>
         <th class="title">사용량</th>
-        <td><%=useSize/1024%><%="KB"%></td>
+        <td><%=useSize / 1024%><%="KB"%>
+        </td>
     </tr>
     <tr>
         <th class="title">남은용량</th>
-        <td><%=(totalSize-useSize)/1024%><%="KB"%></td>
+        <td><%=(totalSize - useSize) / 1024%><%="KB"%>
+        </td>
     </tr>
     </tbody>
 </table>
 <hr/>
 <div id="btn_area">
     <p class="btn">
-        <a href="javascript:selecFile()">파일올리기</a>
+        <a href="javascript:selectFile()">파일올리기</a>
     </p>
     <p class="btn">
-        <a href="javascript:makeFolder()">폴더생성</a>
+        <a href="javascript:dialogFolder()">폴더생성</a>
     </p>
     <p class="btn">
         <a href="javascript:exe()">파일생성</a>
@@ -194,7 +201,7 @@
     </tr>
     </thead>
     <tbody>
-    <%if(!dir.equalsIgnoreCase(mvo.getM_id())){%>
+    <%if (!dir.equalsIgnoreCase(mvo.getM_id())) {%>
     <tr>
         <td></td>
         <td><a href="javascript:back()" id="up">상위로</a></td>
@@ -227,7 +234,9 @@
                 <%=f.getName()%>
             </a>
             <% } else { %>
+            <a href="javascript:down('<%=f.getName()%>')">
             <%=f.getName()%>
+            </a>
             <% } %>
         </td>
         <td></td>
@@ -244,10 +253,44 @@
     <input type="hidden" name="f_name"/>
     <input type="hidden" name="cPath" value="<%=dir%>"/> <%--1111/123--%>
 </form>
+
+<%--파일첨부가 되는 폼은 반드시 enctype이 multipart/form/data로 지정이되어야 한다.
+폼에 파일을 첨부하게 되면 무조건 enctype이 지정되어야 한다.--%>
+<div id="upload_win" title="파일올리기">
+    <form action="upload.jsp" method="post" name="frm2" enctype="multipart/form-data"><%--파일첨부가 되는 애들은 전부 multipart--%>
+        <label for="selectFile">첨부파일:</label>
+
+        <%--cPath는 전해줄 필요가 없다.--%>
+        <%--        <input type="hidden" name="cPath" value="<%=dir%>"/>--%>
+
+        <%--파일선택기--%>
+        <input type="file" id="selectFile" name="upload"/><br/>
+        <p class="btn"><a href="javascript:upload()">보내기</a></p>
+        <p class="btn"><a href="javascript:closeUpload()">닫기</a></p>
+    </form>
+</div>
+
+<div id="folder_win" title="폴더만들기">
+    <form action="makeFolder.jsp" method="post" name="frm3">
+        <%--cPath는 전해줄 필요가 없다.--%>
+        <input type="hidden" name="cPage" value="<%=dir%>"/>
+
+        <label for="f_name">폴더명:</label>
+
+        <%--파일선택기--%>
+        <input type="text" id="f_name" name="f_name"/><br/>
+        <p class="btn"><a href="javascript:makeFolder()">만들기</a></p>
+        <p class="btn"><a href="javascript:closeFolder()">닫기</a></p>
+    </form>
+</div>
+
 <%
     } else
         response.sendRedirect("../index.jsp");
 %>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 <script>
     function home() {
         location.href = "myDisk.jsp"
@@ -274,6 +317,44 @@
             document.ff.submit();
         }
     }
+
+    function selectFile() {
+        $("#upload_win").dialog({});
+    }
+
+    function closeUpload() {
+        $("#upload_win").dialog("close");
+    }
+
+    function upload() {
+        document.frm2.submit();
+    }
+
+    function dialogFolder() {
+        $("#folder_win").dialog();
+    }
+
+    function makeFolder() {
+        document.frm3.submit();
+    }
+
+    function closeFolder() {
+        $("#folder_win").dialog("close");
+
+    }
+
+    function down(fname) {
+        //인자로 받은 파일명을 현재문서 안에있는 ff라는 이름의 폼객체안에
+        //이름이 f_name이라는 input type="hidden"요소의 값(value)로
+        //지정한다.
+        document.ff.f_name.value=fname;
+
+        document.ff.action="download.jsp"
+        document.ff.submit();// 서버로 전달
+
+        document.ff.f_name.value="";
+    }
+
 </script>
 </body>
 </html>
