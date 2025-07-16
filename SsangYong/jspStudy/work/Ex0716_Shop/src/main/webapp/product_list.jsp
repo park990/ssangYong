@@ -49,11 +49,11 @@
                     </a>
                 </td>
                 <td>
-                    할인가 :<%=pvo.getP_saleprice()%> 원<br>
+                    할인가: <%=pvo.getP_saleprice()%>원<br>
                     <font color="red">(<%=pvo.getPercent()%>%)</font>
                 </td>
                 <td>
-                    시중 가격 <%=pvo.getP_price()%>: 원
+                    시중 가격: <%=pvo.getP_price()%>원
                 </td>
             </tr>
             <%
