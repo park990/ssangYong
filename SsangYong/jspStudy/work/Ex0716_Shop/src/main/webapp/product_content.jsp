@@ -4,8 +4,7 @@
 <jsp:useBean id="sb" class="shop.bean.ShopBean" scope="session"/>
 <jsp:setProperty name="sb" property="p_num" param="prod_num"/>
 
-<%ProductVO vo = sb.getProduct();
-  %>
+<%ProductVO vo = sb.getProduct();%>
 <style>
   body {
     font-family: 'Malgun Gothic', sans-serif;
@@ -93,7 +92,7 @@
     <td colspan="2">제품설명</td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><img src ="images/<%=vo.getP_image_l()%>" width="100" height="95"></td>
+    <td colspan="2" align="center"><img src ="images/<%=vo.getP_image_l()%>"></td>
   </tr>
   <tr>
     <td colspan="2"><%=vo.getP_content()%></td>
