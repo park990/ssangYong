@@ -1,0 +1,32 @@
+    <?xml version="1.0" encoding="UTF-8" ?>
+    <!DOCTYPE mapper
+            PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+            "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="emp">
+        <select id="all" resultType="mybatis.vo.empVO">
+            select * from emp
+        </select>
+
+        <insert id="add" parameterType="mybatis.vo.empVO">
+            INSERT INTO emp(empno, ename, job, hiredate)
+            VALUES(#{empno}, #{ename}, #{job}, NOW())
+        </insert>
+
+        <select id="search" resultType="mybatis.vo.empVO" parameterType="Map">
+            <choose>
+                <when test="idx=='0'">
+                    select * from emp where empno=#{input}
+                </when>
+                <when test="idx=='1'">
+                    select * from emp where ename=#{input}
+                </when>
+                <when test="idx=='2'">
+                    select * from emp where job=#{input}
+                </when>
+                <when test="idx=='3'">
+                    select * from emp where deptno=#{input}
+                </when>
+            </choose>
+        </select>
+
+    </mapper>
