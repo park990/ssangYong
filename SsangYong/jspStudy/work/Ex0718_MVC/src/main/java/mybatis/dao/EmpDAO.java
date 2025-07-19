@@ -1,5 +1,6 @@
 package mybatis.dao;
 
+import lombok.extern.slf4j.Slf4j;
 import mybatis.service.FactoryService;
 import mybatis.vo.empVO;
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 public class EmpDAO {
     public static empVO[] getALL() {
@@ -20,7 +22,9 @@ public class EmpDAO {
         ss.close();
         return ar;
     }
+
     public static empVO[] searchALL(String idx, String input) {
+        System.out.println("eachAll 진입: " + idx + ", " + input);
         SqlSession ss = FactoryService.getFactory().openSession();
         empVO[] ar = null;
         Map<String,String> map = new HashMap<>();

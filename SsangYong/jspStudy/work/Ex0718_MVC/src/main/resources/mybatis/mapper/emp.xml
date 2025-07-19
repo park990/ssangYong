@@ -1,4 +1,4 @@
-    <?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
     <!DOCTYPE mapper
             PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -14,17 +14,17 @@
 
         <select id="search" resultType="mybatis.vo.empVO" parameterType="Map">
             <choose>
-                <when test="idx=='0'">
-                    select * from emp where empno=#{input}
+                <when test='idx=="0"'>
+                    select * from emp where empno#{input}
                 </when>
-                <when test="idx=='1'">
+                <when test='idx=="1"'>
                     select * from emp where ename=#{input}
                 </when>
-                <when test="idx=='2'">
+                <when test='idx=="2"'>
                     select * from emp where job=#{input}
                 </when>
-                <when test="idx=='3'">
-                    select * from emp where deptno=#{input}
+                <when test='idx=="3"'>
+                    select * from emp where deptno LIKE CONCAT('%', #{input}, '%')
                 </when>
             </choose>
         </select>

@@ -6,12 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Ex_0709" />
-        <module name="Ex0714_WebHard" />
-        <module name="Ex_0710 (1)" />
         <module name="Ex_0710" />
-        <module name="Ex_0711" />
-        <module name="Ex_0711_Memo" />
       </profile>
     </annotationProcessing>
   </component>

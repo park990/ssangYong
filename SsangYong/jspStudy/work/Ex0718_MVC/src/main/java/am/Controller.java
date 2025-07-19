@@ -87,7 +87,22 @@ public class Controller extends HttpServlet {
             type = "index";
 
         //type으로 받은 값이 actionMap에서 키로 사용되고 있으므로 원하는 객체 얻어내자
+        // 📍 1. 지금 현재 상태
+        // actionMap = {
+        //      "index" : "emp.action.IndexAction",
+        //      "add" : "emp.action.AddAction",
+        //      "total" : "emp.action.TotalAction",
+        //      "dept" : "emp.action.DeptAction",
+        //      "all" : "emp.action.AllAction",
+        //      "search" : "emp.action.SearchAction",
+        // }
+
+
         Action action = actionMap.get(type);
+        // 📍 2. Map의 get()함수를 사용해서 key를 집어넣어서 원하는 Action을 불러옴
+        // 지금 여기서는 "search"를 넣었다고 치면,
+        // action 에는 SearchAction이 할당되는 것임
+
         String viewPath = action.execute(request, response);
 
         //viewPath가 null이면 현재 컨트롤러를 sendredirect
@@ -96,7 +111,7 @@ public class Controller extends HttpServlet {
         else{
             //forward로 이동
             RequestDispatcher disp= request.getRequestDispatcher(viewPath);
-            disp.forward(request,response);
+            disp.forward(request, response);
         }
     }
 

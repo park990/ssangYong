@@ -5,6 +5,7 @@ import mybatis.vo.empVO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 
 public class SearchAction implements Action{
     @Override
@@ -15,6 +16,9 @@ public class SearchAction implements Action{
         System.out.println(input);
 
         empVO[] ar = EmpDAO.searchALL(idx,input);
+
+        System.out.println(Arrays.toString(ar));
+
         request.setAttribute("ar",ar);
 
         return "jsp/search.jsp";
