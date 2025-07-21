@@ -23,6 +23,7 @@ public class SaveImgAction implements Action{
                     new DefaultFileRenamePolicy());
             // 저장된 파일명과 위치를 JSP에서 표현해야 하므로 저장된 정확한 파일명을 얻어내자.
             File f = mr.getFile("upload");
+
             String f_name=null;
             if(f!=null)
                 f_name=f.getName(); //저장된 실제 파일명

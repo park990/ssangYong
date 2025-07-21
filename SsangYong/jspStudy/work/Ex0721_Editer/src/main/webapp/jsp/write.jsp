@@ -79,7 +79,7 @@
       data:frm,
       type:"post",
       dataType: "json", //서버에서 전달하는 자원의 자료형
-      contentType:false,
+      contentType:false,// 파일을 전송할 때는 multipart 로 가야한다.
       processData:false, // 이것을 지정해야 일반적인 데이터 전송이 아님을 증명한다.
 
     }).done(function (json){
