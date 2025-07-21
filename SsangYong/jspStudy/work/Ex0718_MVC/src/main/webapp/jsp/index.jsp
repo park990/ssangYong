@@ -78,6 +78,7 @@
     </select>
     <input type="text" name="searchValue" id="searchValue"/>
     <button type="button" id="b">검색</button>
+    <button type="button" id="b2">검색(json)</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -104,26 +105,67 @@
 
         });
 
-    });
 
-    $("#b").click(function () {
-        let s_type = $("#searchType").val();
-        let s_value = $("#searchValue").val();
+        $("#b2").click(function () {
+            let s_type = $("#searchType").val();
+            let s_value = $("#searchValue").val();
 
-        $.ajax({
-            url: "Controller",
-            type: "post",
-            data: {
-                type: "search",
-                searchType: s_type,
-                searchValue: s_value
-            }
-            // 응답되는 all.jsp에서 반복수행 된 tr들
+            $.ajax({
+                url: "Controller",
+                dataType: "json", // 서버측에서 응답하는 데이터 형식📍📍📍 중요 application/json
+                type: "post",
+                data: {
+                    type: "search2",
+                    searchType: s_type,
+                    searchValue: s_value
+                }
+                // 응답되는 all.jsp에서 반복수행 된 tr들
 
-        }).done(function (res) {
-            $("table.table>tbody").html(res)
-        })
-        console.log("찍힘")
+            }).done(function (res) {
+                console.log(res.items.length)
+                let str = "";
+                for (let i = 0; i < res.items.length; i++) {
+                    str += "<tr><td>";
+                    str += res.items[i].empno;
+                    str += "</td><td>";
+                    str += res.items[i].ename;
+                    str += "</td><td>";
+                    str += res.items[i].job;
+                    str += "</td><td>";
+                    str += res.items[i].sal;
+                    str += "</td><td>";
+                    str += res.items[i].hiredate;
+                    str += "</td><td>";
+                    str += res.items[i].deptno;
+                    str += "</td></tr>";
+                }
+                $("table.table>tbody").html(str)
+
+                $("#searchD").dialog("close")
+            });
+        });
+
+
+        $("#b").click(function () {
+            let s_type = $("#searchType").val();
+            let s_value = $("#searchValue").val();
+
+            $.ajax({
+                url: "Controller",
+                type: "post",
+                data: {
+                    type: "search",
+                    searchType: s_type,
+                    searchValue: s_value
+                }
+                // 응답되는 all.jsp에서 반복수행 된 tr들
+
+            }).done(function (res) {
+                $("table.table>tbody").html(res)
+                $("#searchD").dialog("close")
+            });
+            console.log("찍힘")
+        });
     });
 
 </script>

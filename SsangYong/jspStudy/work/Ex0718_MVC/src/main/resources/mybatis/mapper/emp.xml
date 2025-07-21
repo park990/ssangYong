@@ -15,7 +15,7 @@
         <select id="search" resultType="mybatis.vo.empVO" parameterType="Map">
             <choose>
                 <when test='idx=="0"'>
-                    select * from emp where empno#{input}
+                    select * from emp where empno=#{input}
                 </when>
                 <when test='idx=="1"'>
                     select * from emp where ename=#{input}
