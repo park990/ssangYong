@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bbs">
+    <resultMap id="map1" type="mybatis.vo.BbsVO">
+        <id property="b_idx" column="b_idx"/>
+        <collection property="c_list" ofType="mybatis.vo.CommVO"
+        select="comm.list" column="b_idx"/>
+    </resultMap>
+
+    <!--총 게시물 수를 반환하는 기능-->
+    <select id="totalCount" resultType="int" parameterType="String">
+        select count(*) from bbs_t
+        where status = 0 and bname=#{bname}
+    </select>
+
+    <!--원글들의 목록 가져오기 인자 3개(bname, begin, end)-->
+    <select id="list" parameterType="Map" resultMap="map1" >
+        select * from(
+            select @RN:=@RN+1 as rnum, a.* from(
+                select * from bbs_t
+                where status=0 <!--0은 삭제안댐 1은삭제됌-->
+                and bname=#{bname}
+                order by b_idx desc
+            ) a, (select @RN := 0) b
+        ) c where c.rnum between #{begin} and #{end}
+    </select>
+
+    <!--원글 저장 기능 insert-->
+
+    <!--원글 삭제 기능 delete-->
+
+    <!--원글 수정 기능 delete-->
+</mapper>
