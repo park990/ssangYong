@@ -5,8 +5,10 @@
 <mapper namespace="bbs">
     <resultMap id="map1" type="mybatis.vo.BbsVO">
         <id property="b_idx" column="b_idx"/>
+
         <collection property="c_list" ofType="mybatis.vo.CommVO"
-        select="comm.list" column="b_idx"/>
+                    select="comm.list" column="b_idx"/>
+        <!--comm.list를 호출함녀서 b_idx값을 인자로 보낸다.-->
     </resultMap>
 
     <!--총 게시물 수를 반환하는 기능-->
@@ -16,20 +18,44 @@
     </select>
 
     <!--원글들의 목록 가져오기 인자 3개(bname, begin, end)-->
-    <select id="list" parameterType="Map" resultMap="map1" >
+    <select id="list" parameterType="Map" resultMap="map1">
         select * from(
-            select @RN:=@RN+1 as rnum, a.* from(
-                select * from bbs_t
-                where status=0 <!--0은 삭제안댐 1은삭제됌-->
-                and bname=#{bname}
-                order by b_idx desc
-            ) a, (select @RN := 0) b
+        select @RN:=@RN+1 as rnum, a.* from(
+        select * from bbs_t
+        where status=0 <!--0은 삭제안댐 1은삭제됌-->
+        and bname=#{bname}
+        order by b_idx desc
+        ) a, (select @RN := 0) b
         ) c where c.rnum between #{begin} and #{end}
     </select>
 
     <!--원글 저장 기능 insert-->
+    <insert id="add" parameterType="Map">
+        insert into bbs_t(subject, writer, content,file_name,ori_name,ip,write_date,
+        hit,bname,status)
+        values(#{subject}, #{writer}, #{content},#{fname},#{oname},#{ip},now(),
+        0,#{bname},0)
+    </insert>
+
+    <!--내용보기-->
+    <select id="see" parameterType="String" resultMap="map1">
+        select * from bbs_t where b_idx=#{n}
+    </select>
 
     <!--원글 삭제 기능 delete-->
+    <update id="del" parameterType="String">
+        update bbs_t
+        set status = 1
+        where b_idx = #{idx}
+    </update>
 
-    <!--원글 수정 기능 delete-->
+    <!--조회수 증가-->
+    <update id="hit" parameterType="String">
+        update bbs_t set hit=hit+1 where b_idx=#{idx}
+    </update>
+
+    <!--원글 수정 기능 -->
+    <select id="revise" resultMap="map1" parameterType="String">
+        select * from bbs_t where b_idx=#{idx}
+    </select>
 </mapper>

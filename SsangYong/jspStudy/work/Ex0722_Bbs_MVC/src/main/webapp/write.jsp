@@ -66,16 +66,41 @@
     </style>
     <script type="text/javascript">
         function sendData() {
-            for (var i = 0; i < document.forms[0].elements.length; i++) {
-                if (document.forms[0].elements[i].value == "") {
-                    alert(document.forms[0].elements[i].name +
-                        "를 입력하세요");
-                    document.forms[0].elements[i].focus();
-                    return;//수행 중단
-                }
+            // for (var i = 0; i < document.forms[0].elements.length; i++) {
+            //     if (document.forms[0].elements[i].value == "") {
+            //         alert(document.forms[0].elements[i].name +
+            //             "를 입력하세요");
+            //         document.forms[0].elements[i].focus();
+            //         return;//수행 중단
+            //     }
+            // }
+//		document.forms[0].action = "test.jsp";
+            let title =$("#title").val().trim();
+            let writer =$("#writer").val().trim();
+            let content =$("#content").val().trim();
+
+            if(title.length<1){
+                alert("제목입력하세요")
+                $("#title").val("")
+                $("#title").focus()
+                return
+            }
+            if(writer.length<1){
+                alert("이름 입력하세요")
+                $("#writer").val("")
+                $("#writer").focus()
+                return
+            }
+            if(content.length<1){
+                alert("내용을 입력하세요")
+                $("#content").val("")
+                $("#content").focus()
+                return
             }
 
-//		document.forms[0].action = "test.jsp";
+
+
+
             document.forms[0].submit();
         }
     </script>
@@ -84,6 +109,7 @@
 <div id="bbs">
     <form action="Controller?type=write" method="post"
           encType="multipart/form-data">
+        <input type="hidden" name="bname" value="BBS"/>
         <table summary="게시판 글쓰기">
             <caption>게시판 글쓰기</caption>
             <tbody>

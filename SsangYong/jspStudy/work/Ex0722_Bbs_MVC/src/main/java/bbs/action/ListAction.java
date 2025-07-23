@@ -42,6 +42,7 @@ public class ListAction implements Action{
         // JSP에서 표현하기 위해 request에 저장!
         request.setAttribute("ar", ar);
         request.setAttribute("page", page);
+        request.setAttribute("nowPage", page.getNowPage());
 
         return "list.jsp"; //forward
     }

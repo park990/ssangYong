@@ -9,6 +9,9 @@
         where b_idx = #{idx}
     </select>
     <!--댓글 저장 기능 insert-->
-
+    <insert id="add" parameterType="mybatis.vo.CommVO">
+        insert into comment_t(writer, content, pwd, ip, write_date, b_idx)
+        values(#{writer}, #{content}, #{pwd}, #{ip}, now(), #{b_idx})
+    </insert>
     <!--댓글 삭제 기능 delete-->
 </mapper>
