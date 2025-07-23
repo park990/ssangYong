@@ -105,7 +105,7 @@
 </head>
 <body>
 <div id="bbs">
-  <form action="Controller?type=write" method="post"
+  <form action="Controller?type=update" method="post"
         encType="multipart/form-data">
     <input type="hidden" name="bname" value="BBS"/>
     <table summary="게시판 글쓰기">
@@ -118,6 +118,8 @@
       <tr>
         <th>제목:</th>
         <td><input type="text" name="title" id="title" size="45" value="<%=vo.getSubject()%>"/></td>
+        <input type="hidden" id="b_idx" name ="b_idx" value="<%=vo.getB_idx()%>"/>
+        <input type="hidden" name="cPage" value="${cPage}"/>
       </tr>
       <tr>
         <th>이름:</th>

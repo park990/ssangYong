@@ -16,6 +16,7 @@ public class ReviseAction implements Action{
 
         BbsVO vo = BbsDAO.revise(idx);
         request.setAttribute("vo",vo);
+        request.setAttribute("cPage", cPage);
 
         return "revise.jsp";
     }

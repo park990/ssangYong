@@ -58,4 +58,18 @@
     <select id="revise" resultMap="map1" parameterType="String">
         select * from bbs_t where b_idx=#{idx}
     </select>
+    <!--위에서 불러온거 업데이트로 -->
+    <update id="udt" parameterType="Map">
+        UPDATE bbs_t
+        <set>
+            subject = #{title},
+            content = #{content},
+            writer = #{writer}
+            <if test="fname != null and fname != ''">
+                file_name = #{fname},
+                ori_name = #{oname}
+            </if>
+        </set>
+        WHERE b_idx = #{b_idx}
+    </update>
 </mapper>

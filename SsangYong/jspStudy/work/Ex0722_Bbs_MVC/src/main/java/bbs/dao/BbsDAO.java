@@ -70,17 +70,33 @@ public class BbsDAO {
     public static BbsVO revise(String idx){
         SqlSession ss =FactoryService.getFactory().openSession();
         BbsVO vo = ss.selectOne("bbs.revise",idx);
-        int cnt =ss.delete("bbs.del",idx);
-        if(cnt>0)
-            ss.commit();
-        else
-            ss.rollback();
-        ss.close();
 
         return vo;
 
         // 댓글들 까지 가져오기 위해서는 들리트 하는  comment_t 의 b_idx를
         // 현재 생성하는 bbs_t의 b_idx로 update해줘야한다.
+    }
+
+    public static int udt(String b_idx,String title,String content,String writer,
+                          String fname, String oname){
+        SqlSession ss =FactoryService.getFactory().openSession();
+        Map<String,String> m = new HashMap<>();
+        m.put("b_idx",b_idx);
+        m.put("title",title);
+        m.put("content",content);
+        m.put("writer",writer);
+        m.put("fname",fname);
+        m.put("oname",oname);
+        int cnt =ss.update("bbs.udt",m);
+
+        if(cnt>0){
+            ss.commit();
+        System.out.println("커밋완료");}
+        else{
+            ss.rollback();
+            System.out.println("안댐");}
+        ss.close();
+        return cnt;
     }
 
 
