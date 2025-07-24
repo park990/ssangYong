@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="mybatis.vo.BbsVO" %>
 <%@ page import="mybatis.vo.CommVO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -73,32 +74,30 @@
         <table summary="게시판 글쓰기">
             <caption>게시판 글쓰기</caption>
             <tbody>
-            <%
-                Object obj = request.getAttribute("vo");
-                if (obj != null) {
-                    BbsVO vo = (BbsVO) obj;
-            %>
+            <c:set var="vo" value="${vo}" scope="page"/>
+            <c:if test="${vo!=null}">
+
             <tr>
                 <th>제목:</th>
-                <td><%=vo.getSubject()%>
+                <td>${vo.subject}
                 </td>
             </tr>
 
             <tr>
                 <th>첨부파일:</th>
                 <td><a href="#">
-                    <%=vo.getFile_name()%>
+                    ${vo.file_name}
                 </a></td>
             </tr>
 
             <tr>
                 <th>이름:</th>
-                <td><%=vo.getWriter()%>
+                <td>${vo.writer}
                 </td>
             </tr>
             <tr>
                 <th>내용:</th>
-                <td><%=vo.getContent()%>
+                <td>${vo.content}
                 </td>
             </tr>
 
@@ -119,14 +118,14 @@
         비밀번호:<input type="password" name="pwd"/><br/>
 
 
-        <input type="hidden" name="b_idx" value="<%=vo.getB_idx()%>">
+        <input type="hidden" name="b_idx" value="${vo.b_idx}">
         <input type="hidden" name="cPage" value="${param.cPage}"/>
         <input type="hidden" name="type" value="commadd"/>
         <input type="submit" value="저장하기"/>
     </form>
 <form name="ff" method="post"> <%--📍 이폼이 가는거임 📍--%>
     <input type="hidden" name="type"/>
-    <input type="hidden" name="b_idx" value="<%=vo.getB_idx()%>"/>
+    <input type="hidden" name="b_idx" value="${vo.b_idx}"/>
     <input type="hidden" name="cPage" value="${param.cPage}"/>
 </form>
     <%--삭제 클릭시 팝업창--%>
@@ -134,7 +133,7 @@
         <form action="Controller" method="post">
             <p>정말로 삭제하시겠습니까?</p>
             <input type="hidden" name="type" value="del"/>
-            <input type="hidden" name="b_idx" value="<%=vo.getB_idx()%>"/>
+            <input type="hidden" name="b_idx" value="${vo.b_idx}"/>
             <input type="hidden" name="cPage" value="${param.cPage}"/>
             <button type="button" onclick="delB(this.form)">삭제</button>
         </form>
@@ -142,22 +141,20 @@
 
     댓글들
     <hr/>
-    <%
-        for (CommVO cvo : vo.getC_list()) {
-
-    %>
+    <c:forEach items="${vo.c_list}" var="cvo">
     <div>
-        이름:<%=cvo.getWriter()%> &nbsp;&nbsp;
-        날짜:<%=cvo.getWrite_date()%><br/>
-        내용:<%=cvo.getContent()%>
+        이름:${cvo.writer}&nbsp;
+        날짜:${cvo.write_date}&nbsp;<br/>
+        내용:${cvo.content}&nbsp;
 <%--      📍  <input type="hidden" id="c_b_idx" value="<%=cvo.getB_idx()%>">--%>
     </div>
     <hr/>
 </div>
-<%
-        }
-    }
-%>
+    </c:forEach>
+</c:if>
+
+
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
 <script>

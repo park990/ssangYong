@@ -127,17 +127,17 @@
                     </c:if>
 
 
-                    <c:forEach begin="${p.startPage}" end="${p.endPage}">
-                        <c:if test="${p.nowPage==p.startPage}">
-                            <li class="now">${p.nowPage}</li>
+                    <c:forEach begin="${p.startPage}" end="${p.endPage}" var="i">
+                        <c:if test="${p.nowPage==i}">
+                            <li class="now">${i}</li>
                         </c:if>
-                        <c:if test="${p.nowPage!=p.startPage}">
-                            <li><a href="Controller?type=list&cPage=${p.nowPage}">${p.nowPage}</a></li>
+                        <c:if test="${p.nowPage!=i}">
+                            <li><a href="Controller?type=list&cPage=${i}">${i}</a></li>
                         </c:if>
                     </c:forEach>
 
                     <c:if test="${p.endPage<p.totalPage}">
-                        <li><a href="Controller?type=list&cPage=${p.nowPage+p.PagePerBlock}">&gt;</a></li>
+                        <li><a href="Controller?type=list&cPage=${p.nowPage+p.pagePerBlock}">&gt;</a></li>
                     </c:if>
                     <c:if test="${p.endPage>=p.totalPage}">
                         <li class="disable">&gt;</li>
@@ -153,13 +153,13 @@
         <tbody>
 
         <c:forEach var="vo" items="${requestScope.ar}" varStatus="k">
-        <c:set var="num" value="${p.totalCount-((p.nowPage-1)*p.numPerPage+1)+k.index}"/>
+            <c:set var="num" value="${p.totalCount-((p.nowPage-1)*p.numPerPage+k.index)}"/>
             <tr>
                 <td>${num}</td>
                 <td><a href="Controller?type=view&b_idx=${vo.b_idx}&cPage=${p.nowPage}">
-                    ${vo.subject}
+                        ${vo.subject}
                     <c:if test="${vo.c_list!=null and vo.c_list.size()>0}">
-                    <c:out value="${vo.c_list.size()}"/>
+                        <c:out value="(${vo.c_list.size()}+)"/>
                     </c:if>
                 </a>
                 </td>
