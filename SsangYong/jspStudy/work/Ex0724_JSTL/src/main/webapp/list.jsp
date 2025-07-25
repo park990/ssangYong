@@ -159,7 +159,7 @@
                 <td><a href="Controller?type=view&b_idx=${vo.b_idx}&cPage=${p.nowPage}">
                         ${vo.subject}
                     <c:if test="${vo.c_list!=null and vo.c_list.size()>0}">
-                        <c:out value="(${vo.c_list.size()}+)"/>
+                        <c:out value="(${vo.c_list.size()})"/>
                     </c:if>
                 </a>
                 </td>

@@ -6,6 +6,10 @@ public class BbsVO {
     private String b_idx, subject, writer, content, file_name,
             ori_name, pwd, write_date, ip, hit, bname, status;
 
+    public static void main(String[] args) {
+        System.out.println("5+4="+3+2);
+        System.out.println("5+4="+(3+2));
+    }
     //현재 원글에 포함되는 댓글들
     private List<CommVO> c_list;
 

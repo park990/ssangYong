@@ -74,7 +74,7 @@
         <table summary="게시판 글쓰기">
             <caption>게시판 글쓰기</caption>
             <tbody>
-            <c:set var="vo" value="${vo}" scope="page"/>
+            <c:set var="vo" value="${requestScope.vo}" scope="page"/>
             <c:if test="${vo!=null}">
 
             <tr>
@@ -83,12 +83,15 @@
                 </td>
             </tr>
 
+            <c:if test="${vo.file_name ne null and vo.file_name.length()>4}">
             <tr>
                 <th>첨부파일:</th>
-                <td><a href="#">
+                <td><a href="javascript:down('${vo.file_name}')">
                     ${vo.file_name}
                 </a></td>
             </tr>
+
+            </c:if>
 
             <tr>
                 <th>이름:</th>
@@ -127,6 +130,7 @@
     <input type="hidden" name="type"/>
     <input type="hidden" name="b_idx" value="${vo.b_idx}"/>
     <input type="hidden" name="cPage" value="${param.cPage}"/>
+    <input type="hidden" name="f_name"/>
 </form>
     <%--삭제 클릭시 팝업창--%>
     <div id="del_dialog" title="삭제">
@@ -149,8 +153,15 @@
 <%--      📍  <input type="hidden" id="c_b_idx" value="<%=cvo.getB_idx()%>">--%>
     </div>
     <hr/>
-</div>
     </c:forEach>
+</div>
+</c:if>
+<%-- vo객체가 존재하지 않는다면 원래 있던 목록페이지로 이동한다.--%>
+<c:if test="${requestScope.vo eq null}">
+    <c:redirect url="Controller">
+        <c:param name="type" value="list"/>
+        <c:param name="cPage" value="${param.cPage}"/>
+    </c:redirect>
 </c:if>
 
 
@@ -182,6 +193,11 @@
     function revise(){
         document.ff.action="Controller";
         document.ff.type.value="revise"
+        document.ff.submit();
+    }
+    function down(fname){
+        document.ff.action="download.jsp"
+        document.ff.f_name.value=fname;
         document.ff.submit();
     }
 
